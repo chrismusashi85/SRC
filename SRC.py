@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 Fs_in[Hz]のSIN波をFs_out[Hz]のSIN波にSRCするプログラム
 Fs_in <= Fs_out が条件
 '''
-N = Fs_in/100+1 # 入力信号のサンプル数
 LW = 32 # sinc()を畳み込みする長さ（-LW*π/2からLW*π/2まで）
 pi = math.pi
 
 Fs_in = 44100 # ここを任意（ただしFs_in <= Fs_out）で変える。入力信号生成部もあわせて修正する。
 Fs_out = 48000 # ここを任意で変える
 
+N = Fs_in/100+1 # 入力信号のサンプル数
 N_out = int(Fs_out/100) # SRC後信号のサンプル数（1kHzのSin波 10周期分）
 
 def hamming(x):
