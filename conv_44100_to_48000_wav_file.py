@@ -7,8 +7,8 @@ from scipy import fromstring, int16
 import struct
 
 # ==== file open ====
-fname_r = r'C:\Users\e2155910\Desktop\BLEAudio\音源\Low_44100.wav'
-fname_w = r'C:\Users\e2155910\Desktop\BLEAudio\音源\Low_48000_tmp.wav'
+fname_r = r'C:\音源\Low_44100.wav'
+fname_w = r'C:\音源\Low_48000_tmp.wav'
 
 waveFile_r = wave.open(fname_r, mode='rb')
 waveFile_w = wave.open(fname_w, mode='wb')
