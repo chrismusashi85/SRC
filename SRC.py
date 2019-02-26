@@ -6,12 +6,13 @@ import matplotlib.pyplot as plt
 44.1kHzのSIN波を48kHzのSIN波にSRCするプログラム
 
 '''
-N = 240 # Number of input samples　入力信号のサンプル数
 LW = 32 # 畳み込みする関数の長さ（-LW*π/2からLW*π/2まで）
 pi = math.pi
 
 Fs_in = 44100
 Fs_out = 48000
+
+N = int(Fs_out/200) # Number of input samples　入力信号のサンプル数
 
 def hamming(x):
     return 0.54-0.46*math.cos(x)
@@ -58,7 +59,7 @@ for m1 in range(0, N):
     y.append(convolution(x2, m1))
 
 # input signal
-plt.plot(x_221, x1[0:221], marker=".")
+#plt.plot(x_221, x1[0:221], marker=".")
     
-    
-#plt.plot(x, y, marker=".", label="1kHz sin-wave @Fs=48kHz") # 1kHz SIN波 @Fs=48kHz
+plt.title("1kHz sin-wave @Fs_out="+str(Fs_out/1000)+"kHz")
+plt.plot(x, y, marker=".")
