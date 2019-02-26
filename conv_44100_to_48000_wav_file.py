@@ -1,9 +1,4 @@
 
-# coding: utf-8
-
-# In[33]:
-
-
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -60,7 +55,8 @@ def convolution(x, m):
     sum = 0
     (dn, n) = math.modf(m * Fs_in/Fs_out)
     for k in range(int(-LW/2), int(LW/2)):
-        sum = sum + x[int(n+k)] * windowed_sinc(k-dn)
+        if (n+k>=0) and (n+k<N):
+            sum = sum + x[int(n+k)] * windowed_sinc(k-dn)
     return sum
     
 y = [] # output
