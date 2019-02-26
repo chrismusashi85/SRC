@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[12]:
-
-
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -35,13 +29,15 @@ def convolution(x, m):
     sum = 0
     (dn, n) = math.modf(m * Fs_in/Fs_out)
     for k in range(int(-LW/2), int(LW/2)):
-        sum = sum + x[int(n+k)] * windowed_sinc(k-dn)
+        if (n+k>=0) and (n+k<N):
+            sum = sum + x[int(n+k)] * windowed_sinc(k-dn)
     return sum
     
 y = [] # output
 x0 = np.arange(0, 10*2*pi, 2*pi/44.1) # 44.1kHzで10周期分の1khzのSIN波
 x1 = np.sin(x0)
 x2 = x1.tolist()
+#x2.extend([0] * int(LW/2))
 
 '''
 x = np.arange(-LW/2, LW/2, 1/10)
@@ -66,4 +62,3 @@ plt.plot(x_221, x1[0:221], marker=".")
     
     
 #plt.plot(x, y, marker=".", label="1kHz sin-wave @Fs=48kHz") # 1kHz SIN波 @Fs=48kHz
-
